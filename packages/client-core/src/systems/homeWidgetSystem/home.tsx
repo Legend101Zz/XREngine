@@ -23,10 +23,8 @@ All portions of the code written by the Ethereal Engine team are Copyright © 20
 Ethereal Engine. All Rights Reserved.
 */
 
-import { t } from 'i18next'
 import React from 'react'
 
-import { LoadingCircle } from '@etherealengine/client-core/src/components/LoadingCircle'
 import { useLoadLocationScene } from '@etherealengine/client-core/src/components/World/LoadLocationScene'
 import { widgetInitialiseSystem } from '@etherealengine/client-core/src/systems/homeWidgetSystem/widgetInitialiseSystem'
 import { AuthService } from '@etherealengine/client-core/src/user/services/AuthService'
@@ -36,18 +34,7 @@ import { getMutableState, useHookstate } from '@etherealengine/hyperflux'
 
 import { useLoadEngineWithScene } from '@etherealengine/client-core/src/components/World/EngineHooks'
 
-const Card = ({ title, description, image }) => {
-  return (
-    <div
-      className="flex flex-col items-center justify-center bg-gradient-to-r from-purple-900 to-indigo-700 text-white border border-solid border-purple-800 rounded-lg p-6 w-72 h-96"
-      style={{ backgroundColor: '#5e2265' }}
-    >
-      <img src={image} alt={title} className="w-32 h-32 rounded-full mb-4" />
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p>{description}</p>
-    </div>
-  )
-}
+import HomeScreen from './home2Doverlay'
 
 const HomePage = () => {
   const appState = useHookstate(getMutableState(AppLoadingState).state)
@@ -68,19 +55,7 @@ const HomePage = () => {
   useLoadEngineWithScene()
   widgetInitialiseSystem()
 
-  return (
-    <>
-      {appState.value === 'START_STATE' && <LoadingCircle message={t('common:loader.loadingEngine')} />}
-      <div className="flex justify-center items-center h-screen bg-gradient-to-b from-purple-900 to-indigo-700">
-        <div className="flex space-x-4">
-          <Card title="Card 1" description="This is Card 1 description." image="https://via.placeholder.com/150" />
-          <Card title="Card 2" description="This is Card 2 description." image="https://via.placeholder.com/150" />
-          <Card title="Card 3" description="This is Card 3 description." image="https://via.placeholder.com/150" />
-          <Card title="Card 4" description="This is Card 4 description." image="https://via.placeholder.com/150" />
-        </div>
-      </div>
-    </>
-  )
+  return <>{appState.value === 'START_STATE' && <HomeScreen />}</>
 }
 
 export default HomePage
