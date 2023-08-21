@@ -25,16 +25,14 @@ Ethereal Engine. All Rights Reserved.
 
 import React from 'react'
 
+import { useLoadEngineWithScene } from '@etherealengine/client-core/src/components/World/EngineHooks'
 import { useLoadLocationScene } from '@etherealengine/client-core/src/components/World/LoadLocationScene'
+import HomeScreen from '@etherealengine/client-core/src/systems/homeWidgetSystem/home2Doverlay'
 import { widgetInitialiseSystem } from '@etherealengine/client-core/src/systems/homeWidgetSystem/widgetInitialiseSystem'
 import { AuthService } from '@etherealengine/client-core/src/user/services/AuthService'
 import { SceneService } from '@etherealengine/client-core/src/world/services/SceneService'
 import { AppLoadingState } from '@etherealengine/engine/src/common/AppLoadingService'
 import { getMutableState, useHookstate } from '@etherealengine/hyperflux'
-
-import { useLoadEngineWithScene } from '@etherealengine/client-core/src/components/World/EngineHooks'
-
-import HomeScreen from './home2Doverlay'
 
 const HomePage = () => {
   const appState = useHookstate(getMutableState(AppLoadingState).state)

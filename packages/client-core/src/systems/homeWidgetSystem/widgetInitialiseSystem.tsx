@@ -23,15 +23,18 @@ All portions of the code written by the Ethereal Engine team are Copyright © 20
 Ethereal Engine. All Rights Reserved.
 */
 
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { startSystems } from '@etherealengine/engine/src/ecs/functions/SystemFunctions'
 import { TransformSystem } from '@etherealengine/engine/src/transform/systems/TransformSystem'
 
 import { WidgetUISystem } from '@etherealengine/client-core/src/systems/WidgetUISystem'
+import HomeScreen from './home2Doverlay'
 
 export const widgetInitialiseSystem = () => {
   useEffect(() => {
     startSystems([WidgetUISystem], { before: TransformSystem })
   }, [])
+
+  return <HomeScreen />
 }

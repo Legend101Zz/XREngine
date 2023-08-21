@@ -24,7 +24,8 @@ Ethereal Engine. All Rights Reserved.
 */
 
 import { LoadingCircle } from '@etherealengine/client-core/src/components/LoadingCircle'
-import HomePage from '@etherealengine/client-core/src/systems/homeWidgetSystem/home'
+//import HomePage from '@etherealengine/client-core/src/systems/homeWidgetSystem/home'//for later XRUI implementation
+import HomeScreen from '@etherealengine/client-core/src/systems/homeWidgetSystem/home2Doverlay'
 import { t } from 'i18next'
 import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
@@ -33,7 +34,7 @@ const HomeRoutes = () => {
   return (
     <Suspense fallback={<LoadingCircle message={t('common:loader.loadingLocation')} />}>
       <Routes>
-        <Route path=":locationName" element={<HomePage />} />
+        <Route path="*" element={<HomeScreen />} />
       </Routes>
     </Suspense>
   )
